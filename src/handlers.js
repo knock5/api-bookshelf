@@ -42,10 +42,6 @@ export const addBookHandler = (request, h) => {
     updatedAt,
   };
 
-  books.push(newBook);
-
-  const isSuccess = books.filter((b) => b.id === id).length > 0;
-
   if (readPage > pageCount) {
     const response = h.response({
       status: "fail",
@@ -56,6 +52,10 @@ export const addBookHandler = (request, h) => {
 
     return response;
   }
+
+  books.push(newBook);
+
+  const isSuccess = books.filter((b) => b.id === id).length > 0;
 
   if (isSuccess) {
     const response = h.response({
